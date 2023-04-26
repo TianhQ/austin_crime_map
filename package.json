@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "supercluster": "^7.1.5"
+  }
+}
