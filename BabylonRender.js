@@ -74,8 +74,8 @@ const _useMaterial = (type, subType, materials) => {
   return materials.g;
 };
 
-const heightFactors = [3, 5, 10, 15, 20, 40];
-const areaFactors = [2000, 1000, 300, 120, 80, 20];
+const heightFactors = [1, 2, 3, 6, 10, 20];
+const areaFactors = [2000, 1000, 300, 200, 150, 80];
 
 const _createBar = (scene, material, position, count) => {
   let currZoom = map.getZoom() >= 10 ? Math.floor(map.getZoom() - 10) : 0;
@@ -185,15 +185,6 @@ const _createClusterBar = (
     );
     // segArr.push(vSeg);
   }
-  // let finalBar = BABYLON.Mesh.MergeMeshes(
-  //   segArr,
-  //   true,
-  //   true,
-  //   undefined,
-  //   false,
-  //   true
-  // );
-  // finalBar.position.z = (mSegHeight + dSegHeight + pSegHeight + vSegHeight) / 2;
 };
 
 const _createBarSegement = (

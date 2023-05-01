@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Austin Crime Map</title>
+
     <script src="https://cdn.babylonjs.com/babylon.max.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
     <script src="https://unpkg.com/supercluster@7.1.2/dist/supercluster.min.js"></script>
@@ -15,45 +16,140 @@
     />
 
     <script defer type="module" src="_mapController.js"></script>
+    <script defer type="module" src="DualRangeSlider.js"></script>
     <!-- <script defer type="module" src="2DPointLayer.js"></script> -->
-    <!-- <script defer type="module" src="dataloader.js"></script> -->
+    <script defer type="module" src="dataloader.js"></script>
+    <script defer type="module" src="Filter.js"></script>
+    <script defer type="module" src="BabylonClusterLayer.js"></script>
+
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="rangeSlider.css" />
   </head>
   <body>
-    <div id="map">
-      <!-- <div id="filter__button-group">
-        <button class="filter__button" data-value="day">day</button>
-        <button class="filter__button" data-value="night">night</button>
+    <div class="map__filter--menu">
+      <button class="toggle-button" aria-label="Toggle Menu"></button>
+      <div class="menu-content">
+        <div class="map__filter--menuItem">
+          <label> Crime Group</label>
+          <div class="button-group">
+            <button class="filter__button--cType" data-value="v">
+              Violence Crime
+            </button>
+            <button class="filter__button--cType" data-value="p">
+              Property Crime
+            </button>
+            <button class="filter__button--cType" data-value="d">
+              Drug Crime
+            </button>
+            <button class="filter__button--cType" data-value="m">
+              Misdeneanor
+            </button>
+          </div>
+        </div>
+        <div class="map__filter--menuItem">
+          <label>Day/Night</label>
+          <div class="button-group">
+            <button class="filter__button--timeClass" data-value="d">
+              Day
+            </button>
+            <button class="filter__button--timeClass" data-value="n">
+              Night
+            </button>
+          </div>
+        </div>
+        <div class="map__filter--menuItem">
+          <label>Year</label>
+          <div>
+            <div class="range_container">
+              <div class="sliders_control">
+                <input
+                  id="Year__fromSlider"
+                  type="range"
+                  value="2019"
+                  min="2019"
+                  max="2023"
+                />
+                <input
+                  id="Year__toSlider"
+                  type="range"
+                  value="2023"
+                  min="2019"
+                  max="2023"
+                />
+              </div>
+              <div class="form_control">
+                <div class="form_control_container">
+                  <input
+                    class="form_control_container__time__input"
+                    type="number"
+                    id="Year__fromInput"
+                    value="2019"
+                    min="2019"
+                    max="2023"
+                  />
+                </div>
+                <div class="form_control_container">
+                  <input
+                    class="form_control_container__time__input"
+                    type="number"
+                    id="Year__toInput"
+                    value="2023"
+                    min="2019"
+                    max="2023"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="map__filter--menuItem">
+          <label>Hour of Day</label>
+          <div>
+            <div class="range_container">
+              <div class="sliders_control">
+                <input
+                  id="Hour__fromSlider"
+                  type="range"
+                  value="0"
+                  min="0"
+                  max="23"
+                />
+                <input
+                  id="Hour__toSlider"
+                  type="range"
+                  value="23"
+                  min="0"
+                  max="23"
+                />
+              </div>
+              <div class="form_control">
+                <div class="form_control_container">
+                  <input
+                    class="form_control_container__time__input"
+                    type="number"
+                    id="Hour__fromInput"
+                    value="0"
+                    min="0"
+                    max="23"
+                  />
+                </div>
+                <div class="form_control_container">
+                  <input
+                    class="form_control_container__time__input"
+                    type="number"
+                    id="Hour__toInput"
+                    value="23"
+                    min="0"
+                    max="23"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="filter__button--reset">reset</button>
-      <div class="year-selection">
-        <button id="selectAllYearButton" class="slider__button--toggle">
-          Select All Year
-        </button>
-        <input
-          type="range"
-          id="yearSlider"
-          min="2019"
-          max="2023"
-          step="1"
-          value="2019"
-        />
-      </div>
-      <p id="selectedYear">2019</p>
-      <div class="time-selection">
-        <button id="selectAllHourButton" class="slider__button--toggle">
-          Select All Time
-        </button>
-        <input
-          type="range"
-          id="hourSlider"
-          min="0"
-          max="23"
-          step="1"
-          value="12"
-        />
-      </div>
-      <p id="selectedHour">12:00 PM</p> -->
     </div>
+
+    <div id="map"></div>
   </body>
 </html>
